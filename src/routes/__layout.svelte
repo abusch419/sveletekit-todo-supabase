@@ -1,8 +1,8 @@
 <script>
   import { supabase } from "../supabase.js";
   import { user } from "../stores/authStore.js"
-  import { loadTodos } from "../stores/todoStore.js"
-  import { loadEvents } from "../stores/eventStore.js"
+  // import { loadTodos } from "../stores/todoStore.js"
+  // import { loadEvents } from "../stores/eventStore.js"
   import Navbar from "../components/Navbar.svelte"
 
   import Auth from '../components/Auth.svelte'
@@ -10,11 +10,13 @@
 
   user.set(supabase.auth.user())
 
-  supabase.auth.onAuthStateChange((_, session) => {
+  supabase.auth.onAuthStateChange((event, session) => {
+    console.log(event)
     user.set(session?.user)
     if (session?.user) {
-      loadTodos()
-      loadEvents()
+      // console.log("user is signed in")
+      // loadTodos()
+      // loadEvents()
     }
   })
 </script>

@@ -2,20 +2,19 @@
   import { supabase } from "../supabase.js"
 
   let loading = false
-  let email 
+  let email
 
   const handleLogin = async () => {
     try {
       loading = true
-      console.log(email)
-      const {error} = await supabase.auth.signIn({email})  
+      const { error } = await supabase.auth.signIn({ email })
       if (error) throw error
       alert('check your email for the login link')
     } catch (error) {
       console.error(error)
       alert(error.error_description || error.message)
     } finally {
-      loading = false 
+      loading = false
     }
   }
 </script>
@@ -28,11 +27,10 @@
 <form on:submit|preventDefault={handleLogin}>
   <div class="flex flex-col text-sm mb-2">
     <label class="font-bold mb-2 text-gray-800" for="email">Email</label>
-    <input class="appearance-none shadow-sm border border-gray-800 p-2 focus:outline-none focus:border-gray-500 rounded-lg" 
-    type="text" 
-    name="email"
-    placeholder="Add your email"
-    bind:value={email}>
+    <input
+      class="appearance-none shadow-sm border border-gray-800 p-2 focus:outline-none focus:border-gray-500 rounded-lg"
+      type="text" name="email" placeholder="Add your email" bind:value={email}>
   </div>
-  <button type="submit" class="w-full shadow-sm rounded bg-blue-500 hover:bg-blue-600 text-white py-2 px-4">Log In</button>
+  <button type="submit" class="w-full shadow-sm rounded bg-blue-500 hover:bg-blue-600 text-white py-2 px-4">Log
+    In</button>
 </form>

@@ -18,8 +18,6 @@ export const addEvent = async (event_id, user_id) => {
   if (error) {
     return console.error(error)
   }
-  // don't add the user_event_bridge to the events being rendered
-  // events.update((current) => [...current, data[0]])
 }
 
 export const userEventBridgeIsPresentForEvent = async (event_id, user_id) => {
@@ -30,9 +28,9 @@ export const userEventBridgeIsPresentForEvent = async (event_id, user_id) => {
     .match({ event_id, user_id })
   if (data.length > 0) {
     console.log(data)
-    return true
+    return 'true'
   } else {
     console.log('no data')
-    return false
+    return 'false'
   }
 }

@@ -4,6 +4,16 @@ import { eventIdsBelongingToUser } from './eventStore.js'
 
 export const userSongs = writable([])
 
+const compareTimesSeen = (a, b) => {
+  if (a.timesSeen > b.timesSeen) {
+    return -1;
+  }
+  if (a.timesSeen < b.timesSeen) {
+    return 1;
+  }
+  return 0;
+}
+
 export const loadUserSongs = async (user_id) => {
   const userSongIds = await getUserSongIdsFromUserEventBridges(user_id)
 
@@ -16,6 +26,13 @@ export const loadUserSongs = async (user_id) => {
     return console.error(error)
   }
 
+  data.forEach((userSong) => {
+    const count = timesSeen(userSong, userSongIds)
+    userSong.timesSeen = count
+  })
+
+  console.log(data)
+  data.sort(compareTimesSeen)
   userSongs.set(data)
 }
 
@@ -29,9 +46,9 @@ const getUserSongIdsFromUserEventBridges = async (user_id) => {
   return userSongEventBridges.body.map((userSongEventBridge) => userSongEventBridge.song_id)
 }
 
-export const timesSeen = async (song, user_id) => {
-  const userSongIds = await getUserSongIdsFromUserEventBridges(user_id)
+const timesSeen = (song, userSongIds) => {
   let count = 0
+
   userSongIds.forEach((songId) => {
     if (songId === song.id) {
       count += 1

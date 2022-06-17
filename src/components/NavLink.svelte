@@ -4,13 +4,13 @@
   export let href;
 </script>
 
-<a {href} class="link bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page"
-  class:active="{$page.url.pathname.includes(href)}">
+<a {href} class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+  aria-current="page" class:active="{$page.url.pathname === href}">
   {title}
 </a>
 
 <style>
   a.active {
-    background-color: rgba(0, 0, 0, 0.24);
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
   }
 </style>

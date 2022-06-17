@@ -54,7 +54,7 @@
           <div class="flex space-x-4">
 
             <NavLink href="/" title="My Shows" />
-            <NavLink href="events/edit" title="Edit My Shows" />
+            <NavLink href="/events/edit" title="Edit My Shows" />
             <NavLink href="/stats" title="Stats" />
 
           </div>

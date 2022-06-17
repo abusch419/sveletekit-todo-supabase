@@ -7,6 +7,7 @@
     await loadEventsBelongingToUser($user.id)
   })
 </script>
+
 <div class="container mx-auto my-6 max-w-lg">
   <h1 class="text-2xl font-bold text-center text-gray-800 md:text-3xl">My shows</h1>
   <ul class="text-center mt-5">

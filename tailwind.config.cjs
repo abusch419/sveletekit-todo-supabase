@@ -9,6 +9,7 @@ module.exports = {
       gray: colors.warmGray,
       blue: colors.blue,
       red: colors.red,
+      indigo: colors.indigo,
       'svelte-prime': '#ff5030',
     },
   },

@@ -85,3 +85,8 @@ export const loadEventsBelongingToUser = async (user_id) => {
   console.log(data)
   userEvents.set(data)
 }
+
+
+export const eventLabel = (event) => {
+  return `${event.date} ${event.city}, ${event.state.toUpperCase()}`;
+};

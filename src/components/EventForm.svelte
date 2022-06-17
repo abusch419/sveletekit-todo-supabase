@@ -2,8 +2,8 @@
 	import { toggleBelongsToUser } from '../stores/eventStore.js';
 	import { events } from '../stores/eventStore.js';
 	import { loadEvents } from '../stores/eventStore.js';
-	import { userEvents } from '../stores/eventStore.js';
-	import { loadEventsBelongingToUser } from '../stores/eventStore.js';
+	// import { userEvents } from '../stores/eventStore.js';
+	// import { loadEventsBelongingToUser } from '../stores/eventStore.js';
 	import { eventIdsBelongingToUser } from '../stores/eventStore.js';
 	import { user } from '../stores/authStore.js';
 	import { onMount } from 'svelte';
@@ -22,7 +22,7 @@
 
 	onMount(async () => {
 		await loadEvents();
-		await loadEventsBelongingToUser($user.id);
+		// await loadEventsBelongingToUser($user.id);
 		userEventIds = await eventIdsBelongingToUser($user.id);
 
 		const checkboxes = document.querySelectorAll(['#event-checkbox']);
@@ -62,7 +62,7 @@
 	</div>
 </form>
 
-<h1 class="text-2xl font-bold text-center text-gray-800 md:text-3xl">My shows</h1>
+<!-- <h1 class="text-2xl font-bold text-center text-gray-800 md:text-3xl">My shows</h1>
 <ul>
 	{#if $userEvents.length > 0}
 		{#each $userEvents as userEvent}
@@ -73,7 +73,7 @@
 			Get started by selecting all of the shows you've attended 💃
 		</p>
 	{/if}
-</ul>
+</ul> -->
 
 <h1 class="text-2xl font-bold text-center text-gray-800 md:text-3xl mt-10">
 	Check out those visuals bro

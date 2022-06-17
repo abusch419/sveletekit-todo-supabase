@@ -1,8 +1,6 @@
 <script>
   import { supabase } from "../supabase.js";
   import { user } from "../stores/authStore.js"
-  // import { loadTodos } from "../stores/todoStore.js"
-  // import { loadEvents } from "../stores/eventStore.js"
   import Navbar from "../components/Navbar.svelte"
 
   import Auth from '../components/Auth.svelte'
@@ -15,13 +13,11 @@
     user.set(session?.user)
     if (session?.user) {
       // console.log("user is signed in")
-      // loadTodos()
-      // loadEvents()
     }
   })
 </script>
 
-<div class="container mx-auto my-6 max-w-lg">
+<div>
   {#if $user}
   <Navbar />
   <slot></slot>
